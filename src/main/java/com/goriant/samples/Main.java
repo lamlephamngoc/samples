@@ -20,8 +20,10 @@ public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static boolean checkIn;
-    public static boolean checkOut;
+    public static boolean shouldCheckIn;
+    public static boolean shouldCheckOut;
+
+    public static boolean isPassedDay = Boolean.TRUE;
 
     public static void main(String[] args) throws Exception {
 
@@ -38,40 +40,57 @@ public class Main {
 
         log.info("Read app.yaml config : {}}", config);
 
+        LocalTime randomCheckIn = config.getRandomCheckIn();
+        LocalTime randomCheckOut = config.getRandomCheckOut();
+
+        log.info("We will CheckIn at `{}` & CheckOut at `{}`", randomCheckIn, randomCheckOut);
+
         while (true) {
 
-            log.info("Wakeup and run checkIn `{}` - checkout `{}`", checkIn, checkOut);
+            log.info("Wakeup and run should CheckIn `{}` - should CheckOut `{}`", shouldCheckIn, shouldCheckOut);
+
             // reset checkIn & checkOut
-            if (passDay() && (checkIn == Boolean.TRUE || checkOut == Boolean.TRUE)) {
-                checkIn = Boolean.FALSE;
-                checkOut = Boolean.FALSE;
-                log.info("Pass day reset checkIn & checkOut flag");
+            if (passDay() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
+                isPassedDay = Boolean.FALSE;
+
+                shouldCheckIn = Boolean.TRUE;
+                shouldCheckOut = Boolean.TRUE;
+                randomCheckIn = config.getRandomCheckIn();
+                randomCheckOut = config.getRandomCheckOut();
+
+                log.info("Pass day reset flags and time random for checkIn at `{}` checkOut at `{}`", randomCheckIn, randomCheckOut);
             }
 
-            if (!checkIn && meetCheckIn(config)) {
+            if (shouldCheckIn && meetCheckIn(randomCheckIn)) {
                 log.info("Start CheckIn");
                 samples(config);
-                checkIn = Boolean.TRUE;
+                shouldCheckIn = Boolean.FALSE;
                 log.info("End Check-in");
             }
 
-            if (!checkOut && meetCheckIn(config)) {
+            if (shouldCheckOut && meetCheckOut(randomCheckOut)) {
                 log.info("Start CheckOut");
                 samples(config);
-                checkOut = Boolean.TRUE;
+                shouldCheckOut = Boolean.FALSE;
                 log.info("End Check-out");
+
+                isPassedDay = Boolean.TRUE;
             }
 
             Thread.sleep(60_000);
         }
     }
 
-    private static boolean meetCheckIn(AppConfig config) {
-        return LocalTime.now().compareTo(config.getRandomCheckIn()) > 0;
+    private static boolean meetCheckOut(LocalTime checkOut) {
+        return LocalTime.now().compareTo(checkOut) > 0;
+    }
+
+    private static boolean meetCheckIn(LocalTime checkIn) {
+        return LocalTime.now().compareTo(checkIn) > 0;
     }
 
     private static boolean passDay() {
-        return LocalTime.now().compareTo(LocalTime.of(23, 30)) > 0;
+        return LocalTime.now().compareTo(LocalTime.of(23, 45)) > 0 && isPassedDay;
     }
 
     private static void samples(AppConfig config) throws MalformedURLException, InterruptedException {
