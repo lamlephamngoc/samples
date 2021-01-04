@@ -11,8 +11,12 @@ import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.goriant.samples.Constants.CONFIG_PATH;
 
@@ -20,16 +24,15 @@ public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static boolean shouldCheckIn;
-    public static boolean shouldCheckOut;
-
-    public static boolean isPassedDay = Boolean.TRUE;
+    private static boolean shouldCheckIn;
+    private static boolean shouldCheckOut;
+    private static final Set<String> checkInDays = new HashSet<>();
 
     public static void main(String[] args) throws Exception {
 
-        log.info("======================================");
-        log.info("======================================");
-        log.info("======================================");
+        log.info(Constants.BREAK_LINE);
+        log.info(Constants.BREAK_LINE);
+        log.info(Constants.BREAK_LINE);
 
         log.info("Start samples");
 
@@ -47,18 +50,23 @@ public class Main {
 
         while (true) {
 
-            log.info("Wakeup and run should CheckIn `{}` - should CheckOut `{}`", shouldCheckIn, shouldCheckOut);
+            log.info("Wakeup and run should CheckIn `{}` at `{}` - should CheckOut `{}` at `{}`",
+                    shouldCheckIn, randomCheckIn,
+                    shouldCheckOut, randomCheckOut);
 
             // reset checkIn & checkOut
             if (passDay() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
-                isPassedDay = Boolean.FALSE;
 
-                shouldCheckIn = Boolean.TRUE;
-                shouldCheckOut = Boolean.TRUE;
-                randomCheckIn = config.getRandomCheckIn();
-                randomCheckOut = config.getRandomCheckOut();
+                String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
+                log.info("Passed day - current date `{}` - checkInDays `{}`", currentDate, checkInDays);
+                if (checkInDays.add(currentDate)) {
+                    shouldCheckIn = Boolean.TRUE;
+                    shouldCheckOut = Boolean.TRUE;
+                    randomCheckIn = config.getRandomCheckIn();
+                    randomCheckOut = config.getRandomCheckOut();
 
-                log.info("Pass day reset flags and time random for checkIn at `{}` checkOut at `{}`", randomCheckIn, randomCheckOut);
+                    log.info("Pass day reset flags and time random for checkIn at `{}` checkOut at `{}`", randomCheckIn, randomCheckOut);
+                }
             }
 
             if (shouldCheckIn && meetCheckIn(randomCheckIn)) {
@@ -73,8 +81,6 @@ public class Main {
                 samples(config);
                 shouldCheckOut = Boolean.FALSE;
                 log.info("End Check-out");
-
-                isPassedDay = Boolean.TRUE;
             }
 
             Thread.sleep(60_000);
@@ -90,7 +96,8 @@ public class Main {
     }
 
     private static boolean passDay() {
-        return LocalTime.now().compareTo(LocalTime.of(23, 45)) > 0 && isPassedDay;
+
+        return LocalTime.now().compareTo(LocalTime.of(23, 59)) > 0;
     }
 
     private static void samples(AppConfig config) throws MalformedURLException, InterruptedException {
@@ -126,7 +133,6 @@ public class Main {
         List<WebElement> chats = driver.findElements(By.className(Constants.CHAT_CSS_SELECTOR));
         WebElement otpMsg = chats.get(chats.size() - 1);
         String[] msgArr = otpMsg.getText().split(" ");
-        String otp = msgArr[msgArr.length - 1];
-        return otp;
+        return msgArr[msgArr.length - 1]; // otp
     }
 }

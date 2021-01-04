@@ -12,17 +12,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 
-public class RemoteWebDriverFactory {
+public final class RemoteWebDriverFactory {
+
+    private RemoteWebDriverFactory() {}
 
     public static RemoteWebDriver createDriverFromSession(final String id, String url) throws MalformedURLException {
         final SessionId sessionId = new SessionId(id);
-        final URL command_executor = new URL(url);
-        CommandExecutor executor = new HttpCommandExecutor(command_executor) {
+        final URL commandExecutor = new URL(url);
+        CommandExecutor executor = new HttpCommandExecutor(commandExecutor) {
 
             @Override
             public Response execute(Command command) throws IOException {
                 Response response;
-                if (command.getName() == "newSession") {
+                if ("newSession".equals(command.getName())) {
                     response = new Response();
                     response.setSessionId(sessionId.toString());
                     response.setStatus(0);
@@ -38,9 +40,7 @@ public class RemoteWebDriverFactory {
                         responseCodec = this.getClass().getSuperclass().getDeclaredField("responseCodec");
                         responseCodec.setAccessible(true);
                         responseCodec.set(this, new W3CHttpResponseCodec());
-                    } catch (NoSuchFieldException e) {
-                        e.printStackTrace();
-                    } catch (IllegalAccessException e) {
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
                         e.printStackTrace();
                     }
 

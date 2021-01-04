@@ -5,10 +5,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public final class TimeUtils {
 
-    public static void main(String[] args) {
-        System.out.println(LocalTime.now().compareTo(LocalTime.of(23,59)) > 0);
-    }
-
     private TimeUtils() {}
 
     public static LocalTime between(LocalTime startTime, LocalTime endTime) {
