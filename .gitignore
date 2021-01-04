@@ -47,7 +47,7 @@ cmake-build-*/
 
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
-
+*.iml
 # File-based project format
 *.iws
 
@@ -68,7 +68,7 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-
+.idea/
 # Editor-based Rest Client
 .idea/httpRequests
 
