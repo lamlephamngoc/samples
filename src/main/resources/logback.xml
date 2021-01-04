@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="logs"/>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                [%-4level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%20.45c{3.}]: %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/samples.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>[%-5level] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%20.45c{3.}]: %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/%d{yyyy-MM-dd}/payment-services.%i.log.zip</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.goriant" level="info" additivity="false">
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="Console"/>
+    </logger>
+</configuration>
