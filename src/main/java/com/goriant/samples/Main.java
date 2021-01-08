@@ -50,7 +50,7 @@ public class Main {
                     shouldCheckOut, randomCheckOut);
 
             // reset checkIn & checkOut
-            if (passDay() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
+            if (passDayExcludeWeekend() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
 
                 String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
                 log.info("Passed day - current date `{}` - checkInDays `{}`", currentDate, checkInDays);
