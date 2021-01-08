@@ -1,21 +1,17 @@
 package com.goriant.samples;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import com.goriant.samples.service.CheckInService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 import java.io.FileInputStream;
-import java.net.MalformedURLException;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static com.goriant.samples.Constants.CONFIG_PATH;
@@ -23,10 +19,9 @@ import static com.goriant.samples.Constants.CONFIG_PATH;
 public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
-
-    private static boolean shouldCheckIn;
-    private static boolean shouldCheckOut;
     private static final Set<String> checkInDays = new HashSet<>();
+    private static boolean shouldCheckIn = Boolean.TRUE;
+    private static boolean shouldCheckOut = Boolean.FALSE;
 
     public static void main(String[] args) throws Exception {
 
@@ -71,19 +66,19 @@ public class Main {
 
             if (shouldCheckIn && meetCheckIn(randomCheckIn)) {
                 log.info("Start CheckIn");
-                samples(config);
+                CheckInService.getInstance().checkIn(config);
                 shouldCheckIn = Boolean.FALSE;
                 log.info("End Check-in");
             }
 
             if (shouldCheckOut && meetCheckOut(randomCheckOut)) {
                 log.info("Start CheckOut");
-                samples(config);
+                CheckInService.getInstance().checkIn(config);
                 shouldCheckOut = Boolean.FALSE;
                 log.info("End Check-out");
             }
 
-            Thread.sleep(60_000);
+            Thread.sleep(Constants.ONE_MINUTE);
         }
     }
 
@@ -95,44 +90,8 @@ public class Main {
         return LocalTime.now().compareTo(checkIn) > 0;
     }
 
-    private static boolean passDay() {
-
-        return LocalTime.now().compareTo(LocalTime.of(23, 59)) > 0;
-    }
-
-    private static void samples(AppConfig config) throws MalformedURLException, InterruptedException {
-        RemoteWebDriver driver = RemoteWebDriverFactory.createDriverFromSession("", Constants.SELENIUM_SERVER);
-        driver.get(Constants.HRM_URL);
-
-        WebElement userName = driver.findElementByName(Constants.USER_NAME);
-        userName.sendKeys(config.getUser());
-        Thread.sleep(1000);
-
-        WebElement pass = driver.findElementByName(Constants.PASSWORD);
-        pass.sendKeys(config.getPassword());
-        pass.sendKeys(Keys.RETURN);
-        Thread.sleep(1000);
-
-        String otp = getOtp(config);
-        log.info("Login with OTP : {}", otp);
-
-        WebElement otpInput = driver.findElementById(Constants.OTP_ID);
-        otpInput.sendKeys(otp);
-        otpInput.sendKeys(Keys.RETURN);
-
-        Thread.sleep(5_000);
-        driver.quit();
-    }
-
-    private static String getOtp(AppConfig config) throws MalformedURLException, InterruptedException {
-        RemoteWebDriver driver = RemoteWebDriverFactory.createDriverFromSession(config.getSessionId(), Constants.SELENIUM_SERVER);
-
-        driver.get(config.getOtpUrl());
-
-        Thread.sleep(5000);
-        List<WebElement> chats = driver.findElements(By.className(Constants.CHAT_CSS_SELECTOR));
-        WebElement otpMsg = chats.get(chats.size() - 1);
-        String[] msgArr = otpMsg.getText().split(" ");
-        return msgArr[msgArr.length - 1]; // otp
+    private static boolean passDayExcludeWeekend() {
+        return LocalTime.now().compareTo(LocalTime.of(3, 9)) > 0
+                && (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY || LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY);
     }
 }

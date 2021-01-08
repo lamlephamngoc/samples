@@ -2,14 +2,67 @@ package com.goriant.samples;
 
 import java.time.LocalTime;
 import java.util.Base64;
+import java.util.Map;
 
 public class AppConfig {
     private String user;
     private String password;
-    private String sessionId;
-    private String otpUrl;
     private String checkIn;
     private String checkOut;
+    private String chatUrl;
+    private String chatRequestBody;
+    private Map<String, String> chatHeaders;
+    private String loginUrl;
+    private Map<String, String> loginHeaders;
+    private String otpUrl;
+
+    public String getOtpUrl() {
+        return otpUrl;
+    }
+
+    public void setOtpUrl(String otpUrl) {
+        this.otpUrl = otpUrl;
+    }
+
+    public String getLoginUrl() {
+        return loginUrl;
+    }
+
+    public void setLoginUrl(String loginUrl) {
+        this.loginUrl = loginUrl;
+    }
+
+    public Map<String, String> getLoginHeaders() {
+        return loginHeaders;
+    }
+
+    public void setLoginHeaders(Map<String, String> loginHeaders) {
+        this.loginHeaders = loginHeaders;
+    }
+
+    public String getChatRequestBody() {
+        return chatRequestBody;
+    }
+
+    public void setChatRequestBody(String chatRequestBody) {
+        this.chatRequestBody = chatRequestBody;
+    }
+
+    public String getChatUrl() {
+        return chatUrl;
+    }
+
+    public void setChatUrl(String chatUrl) {
+        this.chatUrl = chatUrl;
+    }
+
+    public Map<String, String> getChatHeaders() {
+        return chatHeaders;
+    }
+
+    public void setChatHeaders(Map<String, String> chatHeaders) {
+        this.chatHeaders = chatHeaders;
+    }
 
     public String getUser() {
         return user;
@@ -27,22 +80,6 @@ public class AppConfig {
         this.password = password;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
-    public String getOtpUrl() {
-        return otpUrl;
-    }
-
-    public void setOtpUrl(String otpUrl) {
-        this.otpUrl = otpUrl;
-    }
-
     public String getCheckIn() {
         return checkIn;
     }
@@ -57,19 +94,6 @@ public class AppConfig {
 
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("AppConfig{");
-        sb.append("user='").append(user).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", sessionId='").append(sessionId).append('\'');
-        sb.append(", otpUrl='").append(otpUrl).append('\'');
-        sb.append(", checkIn='").append(checkIn).append('\'');
-        sb.append(", checkOut='").append(checkOut).append('\'');
-        sb.append('}');
-        return sb.toString();
     }
 
     public LocalTime getRandomCheckIn() {
@@ -89,5 +113,16 @@ public class AppConfig {
         int minuteTo = Integer.parseInt(ranges[1].split(":")[1]);
 
         return TimeUtils.between(LocalTime.of(hourFrom, minuteFrom), LocalTime.of(hourTo, minuteTo));
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("AppConfig{");
+        sb.append("user='").append(user).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", checkIn='").append(checkIn).append('\'');
+        sb.append(", checkOut='").append(checkOut).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
