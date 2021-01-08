@@ -1,6 +1,43 @@
 user: "abcxyz"
 password: "Base64.encode"
-sessionId: "12ae1d6e7c6b7d831f2976d03aac1a4d"
-otpUrl: "https://chat.google.com/u/0/dm/gE7kqQAAAAE"
-checkIn: "8:30-8:55"
-checkOut: "18:00-19:00"
+checkIn: "08:35-08:55"
+checkOut: "18:05-17:10"
+#google chat
+chatUrl: "xxx"
+chatRequestBody: "yyy"
+chatHeaders:
+  authority: xxx
+  pragma: xxx
+  cache-control: xxx
+  sec-ch-ua: xxx
+  x-same-domain: xxx
+  sec-ch-ua-mobile: xxx
+  user-agent: xxx
+  content-type: xxx
+  accept: xxx
+  origin: xxx
+  x-client-data: xxx
+  sec-fetch-site: xxx
+  sec-fetch-mode: xxx
+  sec-fetch-dest: xxx
+  referer: xxx
+  accept-language: xxx
+  cookie: xxx
+
+loginUrl: "ttt"
+otpUrl: "ttt"
+loginHeaders:
+  Connection: xxx
+  sec-ch-ua: xxx
+  Accept: xxx
+  X-Requested-With: xxx
+  sec-ch-ua-mobile: xxx
+  User-Agent: xxx
+  Content-Type: xxx
+  Origin: xxx
+  Sec-Fetch-Site: xxx
+  Sec-Fetch-Mode: xxx
+  Sec-Fetch-Dest: xxx
+  Referer: xxx
+  Accept-Language: xxx
+  Cookie: xxx
