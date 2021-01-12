@@ -21,7 +21,7 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
     private static final Set<String> checkInDays = new HashSet<>();
     private static boolean shouldCheckIn = Boolean.TRUE;
-    private static boolean shouldCheckOut = Boolean.FALSE;
+    private static boolean shouldCheckOut = Boolean.TRUE;
 
     public static void main(String[] args) throws Exception {
 
@@ -52,16 +52,12 @@ public class Main {
             // reset checkIn & checkOut
             if (passDayExcludeWeekend() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
 
-                String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
-                log.info("Passed day - current date `{}` - checkInDays `{}`", currentDate, checkInDays);
-                if (checkInDays.add(currentDate)) {
-                    shouldCheckIn = Boolean.TRUE;
-                    shouldCheckOut = Boolean.TRUE;
-                    randomCheckIn = config.getRandomCheckIn();
-                    randomCheckOut = config.getRandomCheckOut();
-
-                    log.info("Pass day reset flags and time random for checkIn at `{}` checkOut at `{}`", randomCheckIn, randomCheckOut);
-                }
+                log.info("Passed day - checkInDays `{}`", checkInDays);
+                shouldCheckIn = Boolean.TRUE;
+                shouldCheckOut = Boolean.TRUE;
+                randomCheckIn = config.getRandomCheckIn();
+                randomCheckOut = config.getRandomCheckOut();
+                log.info("Pass day reset flags and time random for checkIn at `{}` checkOut at `{}`", randomCheckIn, randomCheckOut);
             }
 
             if (shouldCheckIn && meetCheckIn(randomCheckIn)) {
@@ -91,7 +87,9 @@ public class Main {
     }
 
     private static boolean passDayExcludeWeekend() {
-        return LocalTime.now().compareTo(LocalTime.of(3, 9)) > 0
+
+        String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
+        return checkInDays.add(currentDate)
                 && (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY || LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY);
     }
 }
