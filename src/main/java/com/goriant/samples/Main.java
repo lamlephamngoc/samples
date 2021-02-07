@@ -90,6 +90,7 @@ public class Main {
 
         String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
         return checkInDays.add(currentDate)
-                && (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY || LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY);
+                && (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY
+                && LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY);
     }
 }
