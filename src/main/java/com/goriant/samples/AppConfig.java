@@ -15,6 +15,24 @@ public class AppConfig {
     private String loginUrl;
     private Map<String, String> loginHeaders;
     private String otpUrl;
+    private String telegramToken;
+    private String telegramChatId;
+
+    public String getTelegramChatId() {
+        return telegramChatId;
+    }
+
+    public void setTelegramChatId(String telegramChatId) {
+        this.telegramChatId = telegramChatId;
+    }
+
+    public String getTelegramToken() {
+        return telegramToken;
+    }
+
+    public void setTelegramToken(String telegramToken) {
+        this.telegramToken = telegramToken;
+    }
 
     public String getOtpUrl() {
         return otpUrl;

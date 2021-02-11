@@ -16,11 +16,17 @@
         <logback.version>1.0.0</logback.version>
         <unirest.version>1.4.9</unirest.version>
         <jsoup.version>1.13.1</jsoup.version>
+        <telegram.bot.version>5.0.1</telegram.bot.version>
 
         <shade-plugin.version>3.2.4</shade-plugin.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.pengrad</groupId>
+            <artifactId>java-telegram-bot-api</artifactId>
+            <version>${telegram.bot.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
