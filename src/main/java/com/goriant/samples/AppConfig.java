@@ -3,6 +3,7 @@ package com.goriant.samples;
 import java.time.LocalTime;
 import java.util.Base64;
 import java.util.Map;
+import java.util.Set;
 
 public class AppConfig {
     private String user;
@@ -17,6 +18,15 @@ public class AppConfig {
     private String otpUrl;
     private String telegramToken;
     private String telegramChatId;
+    private Set<String> holidays;
+
+    public Set<String> getHolidays() {
+        return holidays;
+    }
+
+    public void setHolidays(Set<String> holidays) {
+        this.holidays = holidays;
+    }
 
     public String getTelegramChatId() {
         return telegramChatId;

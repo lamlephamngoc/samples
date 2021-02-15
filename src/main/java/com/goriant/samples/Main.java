@@ -50,7 +50,8 @@ public class Main {
                     shouldCheckOut, randomCheckOut);
 
             // reset checkIn & checkOut
-            if (passDayExcludeWeekend() && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
+            if (passDayExcludeOffDays(config.getHolidays())
+                    && (shouldCheckIn == Boolean.FALSE || shouldCheckOut == Boolean.FALSE)) {
 
                 log.info("Passed day - checkInDays `{}`", checkInDays);
                 shouldCheckIn = Boolean.TRUE;
@@ -86,10 +87,11 @@ public class Main {
         return LocalTime.now().compareTo(checkIn) > 0;
     }
 
-    private static boolean passDayExcludeWeekend() {
+    private static boolean passDayExcludeOffDays(Set<String> holidays) {
 
         String currentDate = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
         return checkInDays.add(currentDate)
+                && !holidays.contains(currentDate)
                 && (LocalDate.now().getDayOfWeek() != DayOfWeek.SATURDAY
                 && LocalDate.now().getDayOfWeek() != DayOfWeek.SUNDAY);
     }
