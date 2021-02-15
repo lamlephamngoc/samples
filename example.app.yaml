@@ -1,43 +1,31 @@
-user: "abcxyz"
-password: "Base64.encode"
-checkIn: "08:35-08:55"
-checkOut: "18:05-17:10"
+user: "user"
+password: "Encoding.base64(pass)"
+checkIn: "08:45-08:59"
+checkOut: "18:15-19:05"
+telegramToken: "1619758476:AAEq7Q5sygEy_XrrE-nkmW1x_Ep424womtk"
+telegramChatId: "-1001482983823"
 #google chat
 chatUrl: "xxx"
-chatRequestBody: "yyy"
+chatRequestBody: "xxx"
 chatHeaders:
   authority: xxx
-  pragma: xxx
-  cache-control: xxx
-  sec-ch-ua: xxx
-  x-same-domain: xxx
-  sec-ch-ua-mobile: xxx
-  user-agent: xxx
-  content-type: xxx
-  accept: xxx
-  origin: xxx
-  x-client-data: xxx
-  sec-fetch-site: xxx
-  sec-fetch-mode: xxx
-  sec-fetch-dest: xxx
-  referer: xxx
-  accept-language: xxx
-  cookie: xxx
-
-loginUrl: "ttt"
-otpUrl: "ttt"
+#HRM
+loginUrl: "xxx"
+otpUrl: "xxx"
 loginHeaders:
   Connection: xxx
-  sec-ch-ua: xxx
-  Accept: xxx
-  X-Requested-With: xxx
-  sec-ch-ua-mobile: xxx
-  User-Agent: xxx
-  Content-Type: xxx
-  Origin: xxx
-  Sec-Fetch-Site: xxx
-  Sec-Fetch-Mode: xxx
-  Sec-Fetch-Dest: xxx
-  Referer: xxx
-  Accept-Language: xxx
-  Cookie: xxx
+holidays:
+  - 20210208
+  - 20210209
+  - 20210210
+  - 20210211
+  - 20210212
+  - 20210213
+  - 20210214
+  - 20210215
+  - 20210216
+  - 20210421
+  - 20210430
+  - 20210501
+  - 20210503
+  - 20210902
