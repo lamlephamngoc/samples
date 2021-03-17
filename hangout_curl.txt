@@ -1,0 +1,14 @@
+curl 'https://chat.google.com/u/1/_/DynamiteWebUi/data/batchexecute?rpcids=W9QdYe&f.sid=-6240624163372791875&bl=boq_dynamiteuiserver_20210308.06_p4&hl=en&soc-app=1&soc-platform=1&soc-device=1&_reqid=2557164&rt=c' \
+  -H 'authority: chat.google.com' \
+  -H 'content-type: application/x-www-form-urlencoded;charset=UTF-8' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36' \
+  -H 'origin: https://chat.google.com' \
+  -H 'x-client-data: CIm2yQEIprbJAQjBtskBCKmdygEIl6zKAQj0w8oBCPjHygEIiu/KAQjjnMsBCKmdywEItp/LAQ==' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'referer: https://chat.google.com/' \
+  -H 'accept-language: en-US,en;q=0.9,vi;q=0.8,fr;q=0.7,de;q=0.6,ru;q=0.5,es;q=0.4,und;q=0.3' \
+  -H 'cookie: SEARCH_SAMESITE=CgQIyJEB; ANID=AHWqTUmvEprWcn2kvDkxLXJ86uajjZDu87vAhCVLO3azXbdQ4bufzcPRrbYjZg9G; OGPC=19022519-1:; OTZ=5860946_28_28__28_; SID=7gcP3xaBDEWts1JcRcmQrloMeMKQSMd8YkqSJZH67TP8oyJFOOS7o5jUHosBw1szAKRIlQ.; __Secure-3PSID=7gcP3xaBDEWts1JcRcmQrloMeMKQSMd8YkqSJZH67TP8oyJF5ZuyOjHg5Msch82dNabkXg.; HSID=A4ecaJQaJZmHui2WU; SSID=Aa6gEj579vjkUlUUp; APISID=XpkZBv0RnCLSA0b1/AI-mehJuy0tKJVwE_; SAPISID=QQxk9nLevorqTqst/AqnecJuBae2WByq98; __Secure-3PAPISID=QQxk9nLevorqTqst/AqnecJuBae2WByq98; OSID=7gcP37BdEjxM61EAbdzJGCo7dlUbIRZx_HiCg4zBKmBJ4XD5qbsJ3v_m1To1SQgnAsYxYg.; __Secure-OSID=7gcP37BdEjxM61EAbdzJGCo7dlUbIRZx_HiCg4zBKmBJ4XD5HulenrXhRr-26MM82VPmhA.; 1P_JAR=2021-03-17-07; NID=211=PEnLhJUHfxUepeETKjG5FHC8opdRqRPqTc1fopv0XavCKb6WcVNps6yFJ3IpMbczHfhWT1d91HJTCS4Dr8G8IlDx1Phwekictz6yqAid5rZGsJTkAhn8Ak9iNYJZ0qU9Botbgz2qstTEoepT9IX6jFp8dFAEYGX_C9ACnHjVadORMiC-oAImilx3GFNNLoyzI0ttePGYW7xSp-nLg-ak3XVHgTIIUFuka_Ehg22t5xc0tOjZPPSSoV4R6kMLYRfNl7WpgZfV0ifSJOwQE3eklXD2OpWE_zfGHtfDYs6f8qr2Ylz6fXPZZwa07-eqg_Eai2g_YEfaBE2igTTu466eN5ADNdbxthUntf4jkQWdqyVWhrx12zmhX7EopWimaRvKIhLboWzIXrrb1s4IWJBd; SIDCC=AJi4QfHC5eyMEp6yu8itF0e9QVWg-q4SbIRpy9fGJqIt_dYidRgLnGoQDGSHT0ZKpcCKslU_NbT7; __Secure-3PSIDCC=AJi4QfHhskcMDp1Yh6SyI4hieeSlh0basjpduyeleRh5vYn9uWdVBzPMsQDQTLaxF4oCQRYQPOo' \
+  --data-raw 'f.req=%5B%5B%5B%22W9QdYe%22%2C%22%5B%5B%5C%22dm%2FgE7kqQAAAAE%5C%22%2C%5C%22gE7kqQAAAAE%5C%22%2C5%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AM9aX1EiBlxDi-JrW0_xwi1C72jz%3A1615971162012&' \
+  --compressed
