@@ -11,8 +11,8 @@ public class ChatConfig {
 
     ChatConfig(String chatStr) {
         String[] chatStrArr = chatStr.split("\n");
-        this.chatUrl = chatStrArr[0].substring(8, chatStrArr[0].length() - 3);
-        this.chatBody = chatStrArr[15].substring(16, chatStrArr[15].length() - 3);
+        this.chatUrl = chatStrArr[0].split("'")[1].split("'")[0];
+        this.chatBody = chatStrArr[15].split("'")[1].split("'")[0];
         this.chatHeaders = getHeader(chatStrArr);
     }
 

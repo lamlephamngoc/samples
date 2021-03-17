@@ -1,4 +1,4 @@
-  curl 'https://chat.google.com/_/DynamiteWebUi/data/batchexecute?rpcids=W9QdYe&f.sid=7869599780116482164&bl=boq_dynamiteuiserver_20210308.06_p4&hl=vi&soc-app=1&soc-platform=1&soc-device=1&_reqid=659041&rt=c' \
+curl 'https://chat.google.com/_/DynamiteWebUi/data/batchexecute?rpcids=W9QdYe&f.sid=7869599780116482164&bl=boq_dynamiteuiserver_20210308.06_p4&hl=vi&soc-app=1&soc-platform=1&soc-device=1&_reqid=659041&rt=c' \
   -H 'authority: chat.google.com' \
   -H 'x-same-domain: 1' \
   -H 'content-type: application/x-www-form-urlencoded;charset=UTF-8' \
@@ -13,5 +13,5 @@
   -H 'referer: https://chat.google.com/' \
   -H 'accept-language: en-US,en;q=0.9' \
   -H 'cookie: SEARCH_SAMESITE=CgQIrpEB; ANID=AHWqTUnULlPez9yqZoJOHXT1sSGpHfcgphHyh-F-b7A1-XNtU26eMOX39Ntkbj8q; OTZ=5860924_28_28__28_; SID=7gfHTgr3LikanVJ3PPvsnqEpAzpKSdyn30HeskoCtL4lZkbBMWHJ3oIAILK_Yusc_tDaGA.; __Secure-3PSID=7gfHTgr3LikanVJ3PPvsnqEpAzpKSdyn30HeskoCtL4lZkbBPxA3R53OzHpKRa4wdZniFg.; HSID=A53PyprSOM0eGrOYl; SSID=AxLk2ggHNvh70kcJ2; APISID=OVXHhpxKGuIPXBbu/AhSoxuTHfI2Ac1nOQ; SAPISID=iIAFxmqmIb8UB15f/AReB6M5um1caZMomF; __Secure-3PAPISID=iIAFxmqmIb8UB15f/AReB6M5um1caZMomF; OSID=7gfHTrL6ibq0RLw2fpHBvv9L3j88IvC4LFqU7sfjfXsAmI09rxnTZO4FPOQmnimmqrIimw.; __Secure-OSID=7gfHTrL6ibq0RLw2fpHBvv9L3j88IvC4LFqU7sfjfXsAmI09ElEfJOc1DM858bsQAcXlxA.; 1P_JAR=2021-03-17-08; NID=211=B8i5SyF1kJ-RiZmaRwAg3vZucUKA6_tMveKLHtA1DxgrOM1vnZKwW7zR6mYTPZhzvF9JoBRu5AcXAJvVRphqLEWNf-mCZUUm7PuilMHuUaZ9wtkbni8oRkdIAUzXEgazC1iOf61yaloRyQUCj3TFGgPMARkNXf3dK_nJs3yPYPnLHMhrZ_husOuD1VqBEeSRnjNy0phELhU_TOFZlNTSh7V1w7i_AqNSj7f-w7PvZzNRZ1FnLDZXjO8uzfu-OmYndhKNyHM1wTESczboeLnquz4SOQ; SIDCC=AJi4QfGjaKgSMs3VPYv1rH-kCn78eIYm_HxKtgtJ6DhkVMpB49N2csnxaO0RINd78YdNJUYVJK0u; __Secure-3PSIDCC=AJi4QfFzsDoWqvIQv3GXqnmkzP9AZFmoyxm87JopiucNFvb5OYjTf7d4erUrEpuOJbW_pEZbtk8' \
-    --data-raw 'f.req=%5B%5B%5B%22W9QdYe%22%2C%22%5B%5B%5C%22dm%2Flp8USQAAAAE%5C%22%2C%5C%22lp8USQAAAAE%5C%22%2C5%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AM9aX1ENLNRXJk66roywgJMd3x-u%3A1615973037623&' \
-    --compressed
+  --data-raw 'f.req=%5B%5B%5B%22W9QdYe%22%2C%22%5B%5B%5C%22dm%2Flp8USQAAAAE%5C%22%2C%5C%22lp8USQAAAAE%5C%22%2C5%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AM9aX1ENLNRXJk66roywgJMd3x-u%3A1615973037623&' \
+  --compressed
