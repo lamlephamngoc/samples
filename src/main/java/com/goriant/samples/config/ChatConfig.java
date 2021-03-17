@@ -20,7 +20,7 @@ public class ChatConfig {
         Map<String, String> headerMap = new HashMap<>();
         for (int i = 1; i < chatStrArr.length - 2; i++) {
             String headerStr = chatStrArr[i].substring(6, chatStrArr[i].length() - 3);
-            String[] headerArr = headerStr.split(":");
+            String[] headerArr = headerStr.split(":", 2);
             headerMap.put(headerArr[0], headerArr[1]);
         }
 
