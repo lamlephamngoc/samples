@@ -6,6 +6,7 @@ public final class Constants {
     private Constants() {}
 
     public static final String BREAK_LINE = "======================================";
-    public static final String CONFIG_PATH = "app.yaml";
+    public static final String MAIN_CONFIG_PATH = "app.yaml";
+    public static final String CHAT_CONFIG_PATH = "curl_chat.txt";
     public static final String OTP_REGEX = "\\\\\"\\d{6}\\\\\"";
 }

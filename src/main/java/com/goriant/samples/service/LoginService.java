@@ -1,6 +1,6 @@
 package com.goriant.samples.service;
 
-import com.goriant.samples.AppConfig;
+import com.goriant.samples.config.AppConfig;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;

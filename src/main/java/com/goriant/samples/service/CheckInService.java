@@ -1,6 +1,6 @@
 package com.goriant.samples.service;
 
-import com.goriant.samples.AppConfig;
+import com.goriant.samples.config.AppConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

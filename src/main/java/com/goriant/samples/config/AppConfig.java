@@ -1,4 +1,6 @@
-package com.goriant.samples;
+package com.goriant.samples.config;
+
+import com.goriant.samples.TimeUtils;
 
 import java.time.LocalTime;
 import java.util.Base64;
@@ -10,15 +12,13 @@ public class AppConfig {
     private String password;
     private String checkIn;
     private String checkOut;
-    private String chatUrl;
-    private String chatRequestBody;
-    private Map<String, String> chatHeaders;
     private String loginUrl;
     private Map<String, String> loginHeaders;
     private String otpUrl;
     private String telegramToken;
     private String telegramChatId;
     private Set<String> holidays;
+    private ChatConfig chatConfig;
 
     public Set<String> getHolidays() {
         return holidays;
@@ -69,27 +69,15 @@ public class AppConfig {
     }
 
     public String getChatRequestBody() {
-        return chatRequestBody;
-    }
-
-    public void setChatRequestBody(String chatRequestBody) {
-        this.chatRequestBody = chatRequestBody;
+        return this.chatConfig.getChatBody();
     }
 
     public String getChatUrl() {
-        return chatUrl;
-    }
-
-    public void setChatUrl(String chatUrl) {
-        this.chatUrl = chatUrl;
+        return this.chatConfig.getChatUrl();
     }
 
     public Map<String, String> getChatHeaders() {
-        return chatHeaders;
-    }
-
-    public void setChatHeaders(Map<String, String> chatHeaders) {
-        this.chatHeaders = chatHeaders;
+        return this.chatConfig.getChatHeaders();
     }
 
     public String getUser() {
@@ -102,6 +90,10 @@ public class AppConfig {
 
     public String getPassword() {
         return new String(Base64.getDecoder().decode(password));
+    }
+
+    public static void main(String[] args) {
+
     }
 
     public void setPassword(String password) {
@@ -152,5 +144,14 @@ public class AppConfig {
         sb.append(", checkOut='").append(checkOut).append('\'');
         sb.append('}');
         return sb.toString();
+    }
+
+    private void createChatConfig(String chatStr) {
+        this.chatConfig = new ChatConfig(chatStr);
+    }
+
+    public static AppConfig from(AppConfig config, String curlChat) {
+        config.createChatConfig(curlChat);
+        return config;
     }
 }
