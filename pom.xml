@@ -13,15 +13,20 @@
         <maven.compiler.target>15</maven.compiler.target>
         <yaml.version>1.21</yaml.version>
         <slf4j.version>1.7.30</slf4j.version>
-        <logback.version>1.0.0</logback.version>
         <unirest.version>1.4.9</unirest.version>
         <jsoup.version>1.13.1</jsoup.version>
         <telegram.bot.version>5.0.1</telegram.bot.version>
+        <spring.logging.version>2.3.5.RELEASE</spring.logging.version>
 
         <shade-plugin.version>3.2.4</shade-plugin.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+            <version>${spring.logging.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.github.pengrad</groupId>
             <artifactId>java-telegram-bot-api</artifactId>
@@ -31,17 +36,6 @@
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>${yaml.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>runtime</scope>
-            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mashape.unirest</groupId>
