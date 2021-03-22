@@ -12,7 +12,7 @@ public class ChatConfig {
     ChatConfig(String chatStr) {
         String[] chatStrArr = chatStr.split("\n");
         this.chatUrl = chatStrArr[0].split("'")[1].split("'")[0];
-        this.chatBody = chatStrArr[15].split("'")[1].split("'")[0];
+        this.chatBody = chatStrArr[chatStrArr.length-2].split("'")[1].split("'")[0];
         this.chatHeaders = getHeader(chatStrArr);
     }
 
