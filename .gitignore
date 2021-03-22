@@ -148,3 +148,4 @@ buildNumber.properties
 app.yaml
 logs/
 nohup.out
+curl_chat.txt
