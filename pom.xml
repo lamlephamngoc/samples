@@ -19,13 +19,14 @@
         <spring.logging.version>2.3.5.RELEASE</spring.logging.version>
 
         <shade-plugin.version>3.2.4</shade-plugin.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-            <version>${spring.logging.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.pengrad</groupId>
