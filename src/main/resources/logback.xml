@@ -24,8 +24,8 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="com.goriant" level="info" additivity="false">
-        <appender-ref ref="RollingFile"/>
+    <root level="INFO">
         <appender-ref ref="Console"/>
-    </logger>
+        <appender-ref ref="RollingFile"/>
+    </root>
 </configuration>
